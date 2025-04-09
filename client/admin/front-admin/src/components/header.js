@@ -9,6 +9,8 @@ class Header extends HTMLElement {
     await this.render()
   }
 
+
+
   render () {
     this.shadow.innerHTML =
     /*html*/`
@@ -55,9 +57,13 @@ class Header extends HTMLElement {
         <path d="M3 12H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
+  
     </div>
   </header>
   `
+
+  /* este es un mensaje de prueba */
+
   }
 }
     
