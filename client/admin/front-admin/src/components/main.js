@@ -1,15 +1,15 @@
 class Main extends HTMLElement {
-  constructor() {
-    super();
-    this.shadow = this.attachShadow({ mode: 'open' });
+  constructor () {
+    super()
+    this.shadow = this.attachShadow({ mode: 'open' })
   }
 
-  async connectedCallback() {
-    await this.loadData();
-    await this.render();
+  async connectedCallback () {
+    await this.loadData()
+    await this.render()
   }
 
-  loadData() {
+  loadData () {
     this.data = [
       {
         name: 'Carlos',
@@ -26,8 +26,8 @@ class Main extends HTMLElement {
     ]
   }
 
-render() {
-  this.shadow.innerHTML = /*html*/`
+  render () {
+    this.shadow.innerHTML = /* html */`
   <style>
     
     main {
@@ -276,22 +276,21 @@ render() {
   </main>
     `
 
-    const userInfoContainer = this.shadow.querySelector('#usuario-info-container');
+    const userInfoContainer = this.shadow.querySelector('#usuario-info-container')
     userInfoContainer.innerHTML = ''
 
     this.data.forEach(user => {
-      const userDiv = document.createElement('div');
-      userDiv.className = 'usuario-info';
+      const userDiv = document.createElement('div')
+      userDiv.className = 'usuario-info'
       userDiv.innerHTML = `
         <p><strong>Nombre:</strong> ${user.name}</p>
         <p><strong>Email:</strong> ${user.email}</p>
         <p><strong>Fecha de creación:</strong> ${user.createdAt}</p>
         <p><strong>Fecha de actualización:</strong> ${user.updatedAt}</p>
       `
-      userInfoContainer.appendChild(userDiv);
-      })
-    
-  } 
+      userInfoContainer.appendChild(userDiv)
+    })
+  }
 }
 
-customElements.define('main-component', Main);
+customElements.define('main-component', Main)

@@ -1,35 +1,32 @@
 class SubscriptionForm extends HTMLElement {
-
   constructor () {
     super()
     this.shadow = this.attachShadow({ mode: 'open' })
 
     this.data = []
-
   }
 
   async connectedCallback () {
-
     await this.loadData()
     await this.render()
   }
 
-  loadData() {
+  loadData () {
     this.data = [
       {
-        title: "  Promote a new product or service",
-        content: "Start your business today with a great and strong landing page mado to enchance the marketers workflow.",
-        feautured:"Subscripción por un año",
-        formTitle: "Empieza a usarlo",
-        formSubtitle: "Te enviaremos un correo electrónico con las instrucciones para que puedas comenzar a utilizar nuestro bot.",
-        buttonText: "Subscribirme" 
+        title: '  Promote a new product or service',
+        content: 'Start your business today with a great and strong landing page mado to enchance the marketers workflow.',
+        feautured: 'Subscripción por un año',
+        formTitle: 'Empieza a usarlo',
+        formSubtitle: 'Te enviaremos un correo electrónico con las instrucciones para que puedas comenzar a utilizar nuestro bot.',
+        buttonText: 'Subscribirme'
       }
     ]
   }
-  
+
   render () {
     this.shadow.innerHTML =
-    /*html*/`
+    /* html */`
     <style>
 
     {
@@ -272,18 +269,17 @@ class SubscriptionForm extends HTMLElement {
     `
 
     this.data.forEach(suscription => {
-      const suscriptionContainer= this.shadow.querySelector('.subscription-form')
-      if (!suscriptionContainer) return;
+      const suscriptionContainer = this.shadow.querySelector('.subscription-form')
+      if (!suscriptionContainer) return
 
-      suscriptionContainer.querySelector('.explanation-title h3').textContent = suscription.title;
-      suscriptionContainer.querySelector('.explanation-info p').textContent = suscription.content;
-      suscriptionContainer.querySelector('.explanation-featured span').textContent = suscription.feautured;
-      suscriptionContainer.querySelector('.info-area-title h4').textContent = suscription.formTitle;
-      suscriptionContainer.querySelector('.info-area-subtitle span').textContent = suscription.formSubtitle;
-      suscriptionContainer.querySelector('.form-element-button button').textContent = suscription.buttonText;
-    });
-    
+      suscriptionContainer.querySelector('.explanation-title h3').textContent = suscription.title
+      suscriptionContainer.querySelector('.explanation-info p').textContent = suscription.content
+      suscriptionContainer.querySelector('.explanation-featured span').textContent = suscription.feautured
+      suscriptionContainer.querySelector('.info-area-title h4').textContent = suscription.formTitle
+      suscriptionContainer.querySelector('.info-area-subtitle span').textContent = suscription.formSubtitle
+      suscriptionContainer.querySelector('.form-element-button button').textContent = suscription.buttonText
+    })
   }
 }
 
-customElements.define('subscription-form-component', SubscriptionForm);
+customElements.define('subscription-form-component', SubscriptionForm)

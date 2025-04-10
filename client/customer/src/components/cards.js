@@ -1,18 +1,17 @@
 class Cards extends HTMLElement {
-
-  constructor() {
+  constructor () {
     super()
     this.shadow = this.attachShadow({ mode: 'open' })
 
-    this.data= []
+    this.data = []
   }
 
-  async connectedCallback() {
+  async connectedCallback () {
     await this.loadData()
     await this.render()
   }
 
-  loadData() {
+  loadData () {
     this.data = {
       title: 'Fácil de usar',
       description: 'Tan simple como decir qué productos buscas, las características que te interesan y cuanto estás dispuesto a pagas. Nuestro bot se encargará de buscarlo por ti y te notificará cuando encuentre algo que se ajuste a tus preferencias.',
@@ -54,14 +53,13 @@ class Cards extends HTMLElement {
           }
         }
       ]
-      
+
     }
   }
-    
 
-  render() {
-    this.shadow.innerHTML = 
-    /*html*/ `
+  render () {
+    this.shadow.innerHTML =
+    /* html */ `
     <style> 
 
     * {
@@ -271,68 +269,65 @@ class Cards extends HTMLElement {
     </section>
   
     `
-    
 
     this.data.cards.forEach(card => {
-      const cardsListContainer = this.shadow.querySelector('.cards-list');
-      if (!cardsListContainer) return;
+      const cardsListContainer = this.shadow.querySelector('.cards-list')
+      if (!cardsListContainer) return
 
-      const cardElement = document.createElement('div');
-      cardElement.classList.add('card', card.color);
-      cardsListContainer.appendChild(cardElement);
+      const cardElement = document.createElement('div')
+      cardElement.classList.add('card', card.color)
+      cardsListContainer.appendChild(cardElement)
 
-      const cardTitle = document.createElement('div');
-      cardTitle.classList.add('card-title');
-      cardTitle.innerHTML = `<h4><span>Siri,</span> ${card.title}</h4>`;
-      cardElement.appendChild(cardTitle);
+      const cardTitle = document.createElement('div')
+      cardTitle.classList.add('card-title')
+      cardTitle.innerHTML = `<h4><span>Siri,</span> ${card.title}</h4>`
+      cardElement.appendChild(cardTitle)
 
-      const cardImage = document.createElement('div');
-      cardImage.classList.add('card-image');
-      
-      const picture = document.createElement('picture');
+      const cardImage = document.createElement('div')
+      cardImage.classList.add('card-image')
 
-      const source1 = document.createElement('source');
-      source1.srcset = card.images.xs;
-      source1.media = '(min-width: 1920px)';
-      
-      const source2 = document.createElement('source');
-      source2.srcset = card.images.sm;
-      source2.media = '(min-width: 1024px)';
-      
-      const source3 = document.createElement('source');
-      source3.srcset = card.images.md;
-      source3.media = '(min-width: 768px)';
-      
-      const source4 = document.createElement('source');
-      source4.srcset = card.images.lg;
-      source4.media = '(min-width: 480px)';
-      
-      const img = document.createElement('img');
-      img.src = card.images.xs;
-      img.alt = 'Imagen de tarjeta';
-      
-      picture.appendChild(source1);
-      picture.appendChild(source2);
-      picture.appendChild(source3);
-      picture.appendChild(source4);
-      picture.appendChild(img);
-      
-      cardImage.appendChild(picture);
-      cardElement.appendChild(cardTitle);
-      cardElement.appendChild(cardImage);
+      const picture = document.createElement('picture')
 
-      cardsListContainer.appendChild(cardElement);
-      
-    });
-      const cardsImageContainer = this.shadow.querySelector('.cards-image');
-      if (cardsImageContainer) {
-        const mainImg = document.createElement('img');
-        mainImg.src = this.data.images.xs;
-        mainImg.alt = 'Imagen principal';
-        cardsImageContainer.appendChild(mainImg);
+      const source1 = document.createElement('source')
+      source1.srcset = card.images.xs
+      source1.media = '(min-width: 1920px)'
 
-      }
+      const source2 = document.createElement('source')
+      source2.srcset = card.images.sm
+      source2.media = '(min-width: 1024px)'
+
+      const source3 = document.createElement('source')
+      source3.srcset = card.images.md
+      source3.media = '(min-width: 768px)'
+
+      const source4 = document.createElement('source')
+      source4.srcset = card.images.lg
+      source4.media = '(min-width: 480px)'
+
+      const img = document.createElement('img')
+      img.src = card.images.xs
+      img.alt = 'Imagen de tarjeta'
+
+      picture.appendChild(source1)
+      picture.appendChild(source2)
+      picture.appendChild(source3)
+      picture.appendChild(source4)
+      picture.appendChild(img)
+
+      cardImage.appendChild(picture)
+      cardElement.appendChild(cardTitle)
+      cardElement.appendChild(cardImage)
+
+      cardsListContainer.appendChild(cardElement)
+    })
+    const cardsImageContainer = this.shadow.querySelector('.cards-image')
+    if (cardsImageContainer) {
+      const mainImg = document.createElement('img')
+      mainImg.src = this.data.images.xs
+      mainImg.alt = 'Imagen principal'
+      cardsImageContainer.appendChild(mainImg)
     }
   }
+}
 
 customElements.define('cards-component', Cards)
