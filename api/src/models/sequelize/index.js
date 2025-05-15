@@ -27,6 +27,7 @@ fs.readdirSync(__dirname)
     )
   })
   .forEach(file => {
+    // cargar todos los modelos
     const model = require(path.join(__dirname, file))(
       sequelize,
       Sequelize.DataTypes
